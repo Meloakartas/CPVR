@@ -34,4 +34,4 @@ BONUS : Gestion d'incident:
 
 TODO OUT :
 
-- Modifier le nombre de personnes max / room a 2 plutôt que 4
+- Modifier le nombre de personnes max / room a 2 plutôt que 4 ✅
