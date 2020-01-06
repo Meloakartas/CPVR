@@ -21,7 +21,7 @@ public class AppConfigLoaderBehaviour : MonoBehaviour {
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene(SceneToLoadAfterAppConfigLoaded);
         }
-        
+        Debug.Log("Appconfig done");
 	}
 	
 	// Update is called once per frame

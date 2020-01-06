@@ -5,9 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class AppConfig {
     // HTC, force the device to HTC, PC, force device to PC Keyboard, AUTO: select the device according to the hardware connected.
-    public string DeviceUsed = "AUTO"; 
+    public string DeviceUsed = "AUTO";
 
-
+    public string WebAPILink;
     private static AppConfig inst;
 
     public static AppConfig Inst
