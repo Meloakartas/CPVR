@@ -19,6 +19,7 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
     public GameObject SteamVRLeft, SteamVRRight, SteamVRCamera;
     public GameObject UserOtherLeftHandModel, UserOtherRightHandModel;
     private GameObject goFreeLookCameraRig;
+    public GameObject WeatherMenu;
 
     // Use this for initialization
     void Start()
@@ -112,6 +113,18 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
         if (SteamVR_Actions._default.Teleport.GetStateUp(SteamVR_Input_Sources.LeftHand))
         {
             TeleportReleased();
+        }
+
+        if (SteamVR_Actions._default.WeatherMenu.GetStateDown(SteamVR_Input_Sources.LeftHand))
+        {
+            WeatherMenu.SetActive(true);
+            //Display Color menu
+        }
+
+        if (SteamVR_Actions._default.WeatherMenu.GetStateUp(SteamVR_Input_Sources.LeftHand))
+        {
+            WeatherMenu.SetActive(false);
+            //Display Color menu
         }
     }
 

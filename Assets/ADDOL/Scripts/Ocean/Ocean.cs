@@ -187,10 +187,13 @@ namespace OceanSurfaceEffects
             m_oceanMat.SetFloat("_LodFadeDist", m_lodFadeDist);
 
             //This makes sure the grid is always centered were the player is
-            Vector3 pos = Camera.main.transform.position;
-            pos.y = m_seaLevel;
+            if (Camera.main != null)
+            {
+                Vector3 pos = Camera.main.transform.position;
+                pos.y = m_seaLevel;
 
-            m_grid.transform.localPosition = pos;
+                m_grid.transform.localPosition = pos;
+            }
 
         }
 
