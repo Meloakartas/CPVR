@@ -14,14 +14,14 @@ Vannes :
 
 Application multi-utilisateurs :
 
-- Application MU ✅ (TELEPORT NE FONCTIONNE PLUS)
+- Application MU ✅ 
 
 Conditions météo :
 
 - Récupération Conditions Météo a interval régulier ✅ 
 - Personnalisation du lieu en modifiant un fichier JSON ✅
 - Affichage de la skybox en fonction du temps ✅
-- Interface sur manette gauche avec infos ✅ (AFFICHAGE NE MARCHE PLUS)
+- Interface sur manette gauche avec infos ✅ 
 
 BONUS : Gestion d'incident:
 
