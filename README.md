@@ -30,7 +30,7 @@ BONUS : Gestion d'incident:
 
 - Formateur déclenche un feu (via une touche, on démarre les particules de feu - texte chez le formateur) ✅ (manque animation)
 - Chemin indiqué en orange (ligne jusqu'a l'arrivée) ✅
-- Une fois l'opérateur dans la zone de sécurité, on indique que c'est terminé (petit texte chez les deux mecs et arrêter le feu) ✅
+- Une fois l'opérateur dans la zone de sécurité, on indique que c'est terminé (petit texte chez les deux mecs et arrêter le feu) ✅ (LE MESSAGE SUR LA VR NE SAFFICHE PAS)
 
 TODO OUT :
 
