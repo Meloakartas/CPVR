@@ -14,23 +14,23 @@ Vannes :
 
 Application multi-utilisateurs :
 
-- Application MU ✅
+- Application MU ✅ (TELEPORT NE FONCTIONNE PLUS)
 
 Conditions météo :
 
-- Récupération Conditions Météo a interval régulier ✅
+- Récupération Conditions Météo a interval régulier ✅ 
 - Personnalisation du lieu en modifiant un fichier JSON ✅
 - Affichage de la skybox en fonction du temps ✅
-- Interface sur manette gauche avec infos ✅
+- Interface sur manette gauche avec infos ✅ (AFFICHAGE NE MARCHE PLUS)
 
 BONUS : Gestion d'incident:
 
 - Le HTC doit suivre le formateur (manuellement) X
 - Le formateur doit suivre un parcours (manuellement) X
 
-- Formateur déclenche un feu (via une touche, on démarre les particules de feu - texte chez le formateur)
-- Chemin indiqué en orange (ligne jusqu'a l'arrivée)
-- Une fois l'opérateur dans la zone de sécurité, on indique que c'est terminé (petit texte chez les deux mecs et arrêter le feu)
+- Formateur déclenche un feu (via une touche, on démarre les particules de feu - texte chez le formateur) ✅ (manque animation)
+- Chemin indiqué en orange (ligne jusqu'a l'arrivée) ✅
+- Une fois l'opérateur dans la zone de sécurité, on indique que c'est terminé (petit texte chez les deux mecs et arrêter le feu) ✅
 
 TODO OUT :
 
