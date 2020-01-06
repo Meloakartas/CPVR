@@ -25,7 +25,13 @@ Conditions météo :
 
 BONUS : Gestion d'incident:
 
-- Formateur déclenche un feu (via une touche et lorsqu'il se trouve a côté de la cuve, ou non ?)
-- Le HTC doit suivre le formateur (sans avoir le choix ou via TP ?)
-- Le formateur doit suivre un parcours (on indique le parcours ou on l'oblige?)
-- Une fois l'opérateur dans la zone de sécurité, on indique que c'est terminé
+- Le HTC doit suivre le formateur (manuellement) X
+- Le formateur doit suivre un parcours (manuellement) X
+
+- Formateur déclenche un feu (via une touche, on démarre les particules de feu - texte chez le formateur)
+- Chemin indiqué en orange (ligne jusqu'a l'arrivée)
+- Une fois l'opérateur dans la zone de sécurité, on indique que c'est terminé (petit texte chez les deux mecs)
+
+TODO OUT :
+
+- Modifier le nombre de personnes max / room a 2 plutôt que 4
