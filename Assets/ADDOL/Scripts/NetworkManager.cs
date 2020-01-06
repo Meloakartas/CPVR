@@ -10,8 +10,6 @@ using Photon.Pun;
 using Photon.Realtime;
 
 
-namespace WS3
-{
     public class NetworkManager : MonoBehaviourPunCallbacks
     {
 
@@ -122,4 +120,3 @@ namespace WS3
         }
         #endregion
     }
-}

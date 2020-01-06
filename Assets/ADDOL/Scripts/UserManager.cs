@@ -3,8 +3,6 @@ using UnityEngine;
 using UnityStandardAssets.Cameras;
 using UnityStandardAssets.Characters.ThirdPerson;
 
-namespace WS3
-{
     public class UserManager : MonoBehaviourPunCallbacks
     {
         public static GameObject UserMeInstance;
@@ -94,4 +92,4 @@ namespace WS3
             }
         }
     }
-}
+

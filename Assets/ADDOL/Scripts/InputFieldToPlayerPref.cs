@@ -6,8 +6,6 @@ using Photon.Realtime;
 using System.Collections;
 
 
-namespace WS3
-{
     /// <summary>
     /// Player name input field. Let the user input his name, will appear above the player in the game.
     /// </summary>
@@ -66,4 +64,3 @@ namespace WS3
 
         #endregion
     }
-}

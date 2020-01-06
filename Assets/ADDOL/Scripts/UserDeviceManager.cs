@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace WS3
-{
     public enum UserDeviceType
     {
         HTC,
@@ -45,4 +43,3 @@ namespace WS3
             }
         }
     }
-}

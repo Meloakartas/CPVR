@@ -2,8 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace WS3
-{
+
     [RequireComponent(typeof(PhotonView))]
     public class PhotonTransformChildView : MonoBehaviourPunCallbacks, IPunObservable
     {
@@ -111,4 +110,3 @@ namespace WS3
         }
         #endregion
     }
-}
