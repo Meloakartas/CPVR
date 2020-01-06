@@ -199,7 +199,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
             // #Critical
             // Load the Room Level.
-            PhotonNetwork.LoadLevel("MultiuserScene");
+            PhotonNetwork.LoadLevel("ADDOL_scene");
         }
 
     }
