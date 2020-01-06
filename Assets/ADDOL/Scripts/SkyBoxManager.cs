@@ -59,6 +59,9 @@ public class SkyBoxManager : MonoBehaviour
                 case "Atmosphere":
                     RenderSettings.skybox = ClearSkyBox;
                     break;*/
+                default:
+                    RenderSettings.skybox = SunnySkyBox;
+                    break;
             }
         }
     }

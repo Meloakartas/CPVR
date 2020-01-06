@@ -15,6 +15,12 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
 {
     private SteamVR_Input_Sources inputSource;
 
+    public static GameObject UserMeInstance;
+
+    public GameObject OperatorCanvas;
+    public GameObject TutorCanvas;
+    private GameObject UserMePanel;
+
     // reference to SteamController
     public GameObject SteamVRLeft, SteamVRRight, SteamVRCamera;
     public GameObject UserOtherLeftHandModel, UserOtherRightHandModel;
@@ -28,9 +34,9 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
         steamVRactivation();
     }
 
-    private void Awake()
+    void Awake()
     {
-            
+
     }
 
     /// <summary>
@@ -118,13 +124,11 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
         if (SteamVR_Actions._default.WeatherMenu.GetStateDown(SteamVR_Input_Sources.LeftHand))
         {
             WeatherMenu.SetActive(true);
-            //Display Color menu
         }
 
         if (SteamVR_Actions._default.WeatherMenu.GetStateUp(SteamVR_Input_Sources.LeftHand))
         {
             WeatherMenu.SetActive(false);
-            //Display Color menu
         }
     }
 
