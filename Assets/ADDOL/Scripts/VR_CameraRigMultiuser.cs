@@ -20,21 +20,6 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
     public GameObject UserOtherLeftHandModel, UserOtherRightHandModel;
     private GameObject goFreeLookCameraRig;
 
-    #region Snowball Spawn
-    /// <summary>
-    /// The prefab to create when spawning
-    /// </summary>
-    [SerializeField] GameObject SnowballPrefab;
-
-    // Use to configure the throw ball feature
-    [Range(0.2f, 100.0f)] public float MinSpeed;
-    [Range(0.2f, 100.0f)] public float MaxSpeed;
-    [Range(0.2f, 100.0f)] public float MaxSpeedForPressDuration;
-    private float pressDuration = 0;
-    private SteamVR_Input_Sources currentHand;
-
-    #endregion
-
     // Use this for initialization
     void Start()
     {
@@ -119,15 +104,15 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
         // Don't do anything if we are not the UserMe isLocalPlayer
         if (!photonView.IsMine) return;
 
-        /*if (SteamVR_Actions._default.Teleport.GetStateDown(SteamVR_Input_Sources.LeftHand))
-        {
+       if (SteamVR_Actions._default.Teleport.GetStateDown(SteamVR_Input_Sources.LeftHand))
+       {
             TeleportPressed();
-        }*/
+       }
 
-        /*if (SteamVR_Actions._default.Teleport.GetStateUp(SteamVR_Input_Sources.LeftHand))
+        if (SteamVR_Actions._default.Teleport.GetStateUp(SteamVR_Input_Sources.LeftHand))
         {
             TeleportReleased();
-        }*/
+        }
     }
 
     public void TeleportPressed()
