@@ -36,7 +36,23 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
 
     void Awake()
     {
-
+        if (photonView.IsMine)
+        {
+            Debug.LogFormat("Avatar UserMe created for userId {0}", photonView.ViewID);
+            UserMeInstance = gameObject;
+            if (UserMeInstance.tag == "Operator")
+            {
+                Debug.Log("Is OPERATOR");
+                UserMePanel = Instantiate(OperatorCanvas, SteamVRCamera.transform);
+                UserMePanel.SetActive(true);
+            }
+            else
+            {
+                Debug.Log("Is TUTOR");
+                UserMePanel = Instantiate(TutorCanvas, new Vector3(0f, 0f, 0f), Quaternion.identity);
+                UserMePanel.SetActive(true);
+            }
+        }
     }
 
     /// <summary>

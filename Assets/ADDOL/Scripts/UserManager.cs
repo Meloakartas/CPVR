@@ -53,29 +53,29 @@ public class UserManager : MonoBehaviourPunCallbacks
 
     // Start is called before the first frame update
     void Start()
-        {
-            Debug.Log("isLocalPlayer:" + photonView.IsMine);
-            updateGoFreeLookCameraRig();
-            followLocalPlayer();
-            activateLocalPlayer();
-        }
+    {
+        Debug.Log("isLocalPlayer:" + photonView.IsMine);
+        updateGoFreeLookCameraRig();
+        followLocalPlayer();
+        activateLocalPlayer();
+    }
 
-                /// <summary>
-        /// Get the GameObject of the CameraRig
-        /// </summary>
-        protected void updateGoFreeLookCameraRig()
+            /// <summary>
+    /// Get the GameObject of the CameraRig
+    /// </summary>
+    protected void updateGoFreeLookCameraRig()
+    {
+        if (!photonView.IsMine) return;
+        try
         {
-            if (!photonView.IsMine) return;
-            try
-            {
-                // Get the Camera to set as the followed camera
-                goFreeLookCameraRig = transform.Find("/FreeLookCameraRig").gameObject;
-            }
-            catch (System.Exception ex)
-            {
-                Debug.LogWarning("Warning, no goFreeLookCameraRig found\n" + ex);
-            }
+            // Get the Camera to set as the followed camera
+            goFreeLookCameraRig = transform.Find("/FreeLookCameraRig").gameObject;
         }
+        catch (System.Exception ex)
+        {
+            Debug.LogWarning("Warning, no goFreeLookCameraRig found\n" + ex);
+        }
+    }
 
     /// <summary>
     /// Make the CameraRig following the LocalPlayer only.
