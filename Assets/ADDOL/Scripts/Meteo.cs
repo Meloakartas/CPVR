@@ -9,7 +9,7 @@ public class Meteo
     public static event OnWeatherLoaded onWeatherLoaded;
 
     public List<Weather> weather;
-    public int CityID;
+    public string CityNameAndCountry;
     public Main main;
 
     private static Meteo inst;

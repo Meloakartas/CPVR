@@ -29,8 +29,9 @@ public class APICall : MonoBehaviour
         while (true)
         {
             Meteo.Inst.UpdateValuesFromJsonString(System.IO.File.ReadAllText(MeteoConfigFilePath));
+            Debug.Log(Meteo.Inst.CityNameAndCountry);
             Debug.Log(AppConfig.Inst.WebAPILink);
-            using (UnityWebRequest www = UnityWebRequest.Get(String.Format(AppConfig.Inst.WebAPILink, Meteo.Inst.CityID)))
+            using (UnityWebRequest www = UnityWebRequest.Get(String.Format(AppConfig.Inst.WebAPILink, Meteo.Inst.CityNameAndCountry)))
             {
                 yield return www.SendWebRequest();
 
