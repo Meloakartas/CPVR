@@ -1,5 +1,6 @@
 ﻿using Photon.Pun;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityStandardAssets.Cameras;
 using UnityStandardAssets.Characters.ThirdPerson;
 
@@ -10,6 +11,7 @@ public class UserManager : MonoBehaviourPunCallbacks
 
     public GameObject OperatorCanvas;
     public GameObject TutorCanvas;
+    public GameObject FireParticles;
 
     public Material PlayerLocalMat;
     /// <summary>
@@ -47,6 +49,7 @@ public class UserManager : MonoBehaviourPunCallbacks
 
         if(Input.GetButtonDown("Action") & !EventSystemManager.Inst.isFireRunning)
         {
+            //photonView.RPC("ActivateDeactivateFire", RpcTarget.AllViaServer);
             EventSystemManager.Inst.ActivateDeactivateFire();
         }
     }
@@ -60,7 +63,52 @@ public class UserManager : MonoBehaviourPunCallbacks
         activateLocalPlayer();
     }
 
-            /// <summary>
+    [PunRPC]
+    public void ActivateDeactivateFire()
+    {
+        EventSystemManager.Inst.isFireRunning = !EventSystemManager.Inst.isFireRunning;
+
+        if (EventSystemManager.Inst.isFireRunning)
+        {
+            foreach (ParticleSystem ps in FireParticles.GetComponentsInChildren<ParticleSystem>())
+            {
+                ps.Play();
+            }
+            EventSystemManager.Inst.PathToSafeZone.SetActive(true);
+
+            foreach (GameObject can in GameObject.FindGameObjectsWithTag("TutorCanvas"))
+            {
+                can.GetComponentInChildren<Text>().text = "Follow the path to safe zone.";
+            }
+
+            foreach (GameObject can in GameObject.FindGameObjectsWithTag("OperatorCanvas"))
+            {
+                can.GetComponentInChildren<Text>().text = "Follow the path to safe zone.";
+                can.SetActive(true);
+            }
+        }
+        else
+        {
+            foreach (ParticleSystem ps in FireParticles.GetComponentsInChildren<ParticleSystem>())
+            {
+                ps.Stop();
+            }
+            EventSystemManager.Inst.PathToSafeZone.SetActive(false);
+
+            foreach (GameObject can in GameObject.FindGameObjectsWithTag("TutorCanvas"))
+            {
+                can.GetComponentInChildren<Text>().text = "You survived the fire.";
+            }
+
+            foreach (GameObject can in GameObject.FindGameObjectsWithTag("OperatorCanvas"))
+            {
+                can.GetComponentInChildren<Text>().text = "You survived the fire.";
+            }
+            //StartCoroutine(EventSystemManager.Inst.DisableText());
+        }
+    }
+
+    /// <summary>
     /// Get the GameObject of the CameraRig
     /// </summary>
     protected void updateGoFreeLookCameraRig()

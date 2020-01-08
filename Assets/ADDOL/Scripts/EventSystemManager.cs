@@ -1,13 +1,15 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EventSystemManager : MonoBehaviour
+public class EventSystemManager : MonoBehaviourPunCallbacks
 {
     public GameObject TutorTextContainer;
     public GameObject OperatorTextContainer;
     public bool isFireRunning = false;
     public GameObject PathToSafeZone;
+    public GameObject FireParticles;
 
     static EventSystemManager inst;
 
@@ -29,6 +31,11 @@ public class EventSystemManager : MonoBehaviour
         inst = this;
         Inst.OperatorTextContainer.SetActive(false);
         Inst.PathToSafeZone.SetActive(false);
+
+        foreach (ParticleSystem ps in FireParticles.GetComponentsInChildren<ParticleSystem>())
+        {
+            ps.Stop();
+        }
     }
 
     // Start is called before the first frame update
@@ -43,13 +50,17 @@ public class EventSystemManager : MonoBehaviour
         
     }
 
+    [PunRPC]
     public void ActivateDeactivateFire()
     {
         Inst.isFireRunning = !Inst.isFireRunning;
 
         if(Inst.isFireRunning)
         {
-            //Activate animation
+            foreach(ParticleSystem ps in FireParticles.GetComponentsInChildren<ParticleSystem>())
+            {
+                ps.Play();
+            }
             Inst.PathToSafeZone.SetActive(true);
 
             foreach (GameObject can in GameObject.FindGameObjectsWithTag("TutorCanvas"))
@@ -65,7 +76,10 @@ public class EventSystemManager : MonoBehaviour
         }
         else
         {
-            //Deactivate animation
+            foreach (ParticleSystem ps in FireParticles.GetComponentsInChildren<ParticleSystem>())
+            {
+                ps.Stop();
+            }
             Inst.PathToSafeZone.SetActive(false);
 
             foreach (GameObject can in GameObject.FindGameObjectsWithTag("TutorCanvas"))

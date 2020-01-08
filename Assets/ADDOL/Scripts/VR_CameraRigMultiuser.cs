@@ -13,19 +13,17 @@ using Valve.VR;
 /// </summary>
 public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
 {
-    private SteamVR_Input_Sources inputSource;
-
-    public static GameObject UserMeInstance;
-
-    public GameObject OperatorCanvas;
-    public GameObject TutorCanvas;
-    private GameObject UserMePanel;
 
     // reference to SteamController
     public GameObject SteamVRLeft, SteamVRRight, SteamVRCamera;
     public GameObject UserOtherLeftHandModel, UserOtherRightHandModel;
     private GameObject goFreeLookCameraRig;
     public GameObject WeatherMenu;
+    public static GameObject UserMeInstance;
+    private GameObject UserMePanel;
+
+    public GameObject OperatorCanvasPrefab;
+    public GameObject TutorCanvasPrefab;
 
     // Use this for initialization
     void Start()
@@ -42,14 +40,13 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
             UserMeInstance = gameObject;
             if (UserMeInstance.tag == "Operator")
             {
-                Debug.Log("Is OPERATOR");
-                UserMePanel = Instantiate(OperatorCanvas, SteamVRCamera.transform);
-                UserMePanel.SetActive(true);
+                Debug.Log("IS OPERATOR");
+                UserMePanel = Instantiate(OperatorCanvasPrefab, SteamVRCamera.transform);
             }
             else
             {
                 Debug.Log("Is TUTOR");
-                UserMePanel = Instantiate(TutorCanvas, new Vector3(0f, 0f, 0f), Quaternion.identity);
+                UserMePanel = Instantiate(TutorCanvasPrefab, new Vector3(0f, 0f, 0f), Quaternion.identity);
                 UserMePanel.SetActive(true);
             }
         }
@@ -126,56 +123,9 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
     {
         // Don't do anything if we are not the UserMe isLocalPlayer
         if (!photonView.IsMine) return;
-
-       if (SteamVR_Actions._default.Teleport.GetStateDown(SteamVR_Input_Sources.LeftHand))
-       {
-            TeleportPressed();
-       }
-
-        if (SteamVR_Actions._default.Teleport.GetStateUp(SteamVR_Input_Sources.LeftHand))
-        {
-            TeleportReleased();
-        }
-
-        if (SteamVR_Actions._default.WeatherMenu.GetStateDown(SteamVR_Input_Sources.LeftHand))
-        {
-            WeatherMenu.SetActive(true);
-        }
-
-        if (SteamVR_Actions._default.WeatherMenu.GetStateUp(SteamVR_Input_Sources.LeftHand))
-        {
-            WeatherMenu.SetActive(false);
-        }
     }
 
-    public void TeleportPressed()
-    {
-        Debug.Log("Teleport pressed");
-        if (!SteamVRLeft.GetComponent<ControllerPointer>())
-        {
-            SteamVRLeft.AddComponent<ControllerPointer>();
-            SteamVRLeft.GetComponent<ControllerPointer>().UpdateColor(Color.green);
-        }
-    }
-
-    public void TeleportReleased()
-    {
-        if (SteamVRLeft.GetComponent<ControllerPointer>().CanTeleport)
-        {
-            Debug.Log(gameObject.name);
-            gameObject.transform.position = SteamVRLeft.GetComponent<ControllerPointer>().TargetPosition;
-            SteamVRCamera.transform.position = SteamVRLeft.GetComponent<ControllerPointer>().TargetPosition;
-                
-            SteamVRLeft.GetComponent<ControllerPointer>().DesactivatePointer();
-            Destroy(SteamVRLeft.GetComponent<ControllerPointer>());
-        }
-        else
-        {
-            SteamVRLeft.GetComponent<ControllerPointer>().DesactivatePointer();
-            Destroy(SteamVRLeft.GetComponent<ControllerPointer>());
-        }
-    }
-
+    
     [PunRPC]
     void ThrowBall(Vector3 position, Vector3 directionAndSpeed, PhotonMessageInfo info)
     {
